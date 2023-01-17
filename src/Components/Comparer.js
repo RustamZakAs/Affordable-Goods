@@ -51,57 +51,55 @@ export default class Comparer extends Component {
 
     if (parseFloat(first) > parseFloat(second)) {
       this.setState(
-        Object.assign(this.state.data, { firstResultSymbol: symbolX })
+        Object.assign(this.state.data, { 
+          firstResultSymbol: symbolX, 
+          firstResultBool: false, 
+          secondResultSymbol: symbolV,
+          secondResultBool: true
+         })
       );
-      this.setState(Object.assign(this.state.data, { firstResultBool: false }));
-      this.setState(
-        Object.assign(this.state.data, { secondResultSymbol: symbolV })
-      );
-      this.setState(Object.assign(this.state.data, { secondResultBool: true }));
     } else if (parseFloat(first) < parseFloat(second)) {
       this.setState(
-        Object.assign(this.state.data, { firstResultSymbol: symbolV })
-      );
-      this.setState(Object.assign(this.state.data, { firstResultBool: true }));
-      this.setState(
-        Object.assign(this.state.data, { secondResultSymbol: symbolX })
-      );
-      this.setState(
-        Object.assign(this.state.data, { secondResultBool: false })
+        Object.assign(this.state.data, { 
+          firstResultSymbol: symbolV,
+          firstResultBool: true,
+          secondResultSymbol: symbolX,
+          secondResultBool: false
+        })
       );
     } else if (parseFloat(first) === 0 && parseFloat(second) === 0) {
       this.setState(
-        Object.assign(this.state.data, { firstResultSymbol: symbolX })
-      );
-      this.setState(Object.assign(this.state.data, { firstResultBool: false }));
-      this.setState(
-        Object.assign(this.state.data, { secondResultSymbol: symbolX })
-      );
-      this.setState(
-        Object.assign(this.state.data, { secondResultBool: false })
+        Object.assign(this.state.data, { 
+          firstResultSymbol: symbolX,
+          firstResultBool: false,
+          secondResultSymbol: symbolX,
+          secondResultBool: false
+        })
       );
     } else {
       this.setState(
-        Object.assign(this.state.data, { firstResultSymbol: symbolV })
+        Object.assign(this.state.data, { 
+          firstResultSymbol: symbolV,
+          firstResultBool: true,
+          secondResultSymbol: symbolV,
+          secondResultBool: true
+        })
       );
-      this.setState(Object.assign(this.state.data, { firstResultBool: true }));
-      this.setState(
-        Object.assign(this.state.data, { secondResultSymbol: symbolV })
-      );
-      this.setState(Object.assign(this.state.data, { secondResultBool: true }));
     }
     if (parseFloat(first) === 0) {
       this.setState(
-        Object.assign(this.state.data, { firstResultSymbol: symbolX })
+        Object.assign(this.state.data, { 
+          firstResultSymbol: symbolX,
+          firstResultBool: false
+        })
       );
-      this.setState(Object.assign(this.state.data, { firstResultBool: false }));
     }
     if (parseFloat(second) === 0) {
       this.setState(
-        Object.assign(this.state.data, { secondResultSymbol: symbolX })
-      );
-      this.setState(
-        Object.assign(this.state.data, { secondResultBool: false })
+        Object.assign(this.state.data, { 
+          secondResultSymbol: symbolX,
+          secondResultBool: false
+        })
       );
     }
     console.log(this.state.data);
@@ -112,7 +110,7 @@ export default class Comparer extends Component {
   firstPriceChanger = (event) => {
     this.setState(
       Object.assign(this.state.data, {
-        firstPrice: isNuN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+        firstPrice: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
       })
     );
     this.resultComparer();

@@ -100,6 +100,25 @@ p {
     flex-direction: row;
 }
 
+@media screen and (max-width: 350px) {
+    .my-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .result {
+        font-size: x-large;
+        margin-left: 0px;
+    }
+
+    .compare-result {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        top: -15px;
+    }
+}
+
 .result {
     font-size: x-large;
     margin-left: 20px;
