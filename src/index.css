@@ -1,0 +1,194 @@
+:root {
+    --mail-buttons-color: #4CAF50;
+    --mail-buttons-color-hover: #427a44;
+    /* --mail-buttons-color-hover: red; */
+}
+
+@font-face {
+    font-family: "RobotoBold";
+    src: local("RobotoBold"), url("./fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "RobotoLight";
+    src: local("RobotoLight"), url("./fonts/Roboto/Roboto-Light.ttf") format("truetype");
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: "RobotoMedium";
+    src: local("RobotoMedium"), url("./fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+    font-weight: normal;
+}
+
+/*-----start App-----*/
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "RobotoMedium";
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    background-color: aliceblue;
+}
+
+/*-----end App-----*/
+/*-----start Header-----*/
+.header {
+    height: 10%;
+    background-color: silver;
+}
+
+.header-img-div {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    height: 20vh;
+    width: 40%;
+    transition: ease all .99s;
+}
+
+@media only screen and (max-width: 720px) {
+    .header-img-div {
+        position: relative;
+        top: 2px;
+        left: 2px;
+        height: 10vh;
+        width: 40%;
+    }
+}
+
+.header-img {
+    height: 100%;
+}
+/*-----end Header-----*/
+/*-----start Main-----*/
+.main {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.bg-image {
+    opacity: 0.2;
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    width: 40%;
+    object-fit:contain;
+}
+
+.comparer {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.my-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.result {
+    font-size: x-large;
+    margin-left: 20px;
+}
+
+.result-false {
+    color: red;
+}
+
+.result-true {
+    color: green;
+}
+/*-----end Main-----*/
+/*-----start Menu-----*/
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 15%;
+    background-color: silver;
+}
+
+.menu-item {
+    font-family: "RobotoLight";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    width: 20%;
+
+    background-color: var(--mail-buttons-color);
+    border: none;
+    color: white;
+    transition: 1s;
+}
+
+.menu-item:hover {
+    background-color: var(--mail-buttons-color-hover);
+    transition: 1s;
+    cursor: pointer;
+    /* box-shadow: inset 0px 0px 277px 3px var(--mail-buttons-color-hover); */
+}
+
+.menu-item:hover p.first-child {
+    font-size: 250%;  
+}
+
+.menu-item p:first-child {
+    font-size: 200%;
+}
+
+.menu-type-2.menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.menu-type-2 .menu-item {
+    width: calc(100%/3);
+    background-color: var(--mail-buttons-color);
+    border: none;
+    color: white;
+    transition: 1s;
+    border-radius: 0px;
+}
+
+.compare-result {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 34px;
+}
+/*-----end Menu-----*/
+/*-----start Info-----*/
+.info {
+    z-index: 1;
+}
+/*-----end Info-----*/
+/*-----start SendToWhatsapp-----*/
+.send-to-whatsapp {
+    z-index: 1;
+}
+
+.example {
+    position: relative;
+    padding: 1rem;
+    margin: 1rem -15px 0;
+    border: solid #f8f9fa;
+    border-width: 0.2rem 0 0;
+}
+/*-----end SendToWhatsapp-----*/
