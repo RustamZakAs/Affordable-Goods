@@ -39,7 +39,7 @@ export default class SendToWhatsapp extends Component {
 
   render() {
     return (
-      <div className="send-to-whatsapp">
+      <div className="in-main-form">
         <hr />
         <div className="input-group mb-3">
           <label for="whatsappNumber" className="form-label">
@@ -71,7 +71,7 @@ export default class SendToWhatsapp extends Component {
             </div>
           </div>
         </div>
-        <ul class="list-group">
+        <ul className="list-group many">
           {this.state.wnumbers?.map((elem) =>
             elem.toString().length > 0 ? (
               <li className="list-group-item">{elem}</li>

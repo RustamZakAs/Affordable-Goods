@@ -16,30 +16,22 @@ export default class Menu extends Component {
   onClickI = () => {
     this.props.getter('I')
   }
-
-  selected = {
-    border: '2px solid black',
-  }
-
-  unselected = {
-    border: '0px solid black',
-  }
-
+  
   render() {
-    let styleC = this.props.formCode === 'C' ? this.selected : this.unselected;
-    let styleW = this.props.formCode === 'W' ? this.selected : this.unselected;
-    let styleI = this.props.formCode === 'I' ? this.selected : this.unselected;
+    const styleItemC = 'menu-item ' + (this.props.formCode === 'C' ? 'selected' : '')
+    const styleItemW = 'menu-item ' + (this.props.formCode === 'W' ? 'selected' : '')
+    const styleItemI = 'menu-item ' + (this.props.formCode === 'I' ? 'selected' : '')
     return (
       <div className='menu menu-type-2'>
-        <div style={styleC} className='menu-item' onClick={this.onClickC}>
+        <div className={styleItemC} onClick={this.onClickC}>
             <p style={this.divStyle} className='compare-icon'>≠</p>
             <p>Compare</p>
         </div>
-        <div style={styleW} className='menu-item' onClick={this.onClickW}>
+        <div className={styleItemW} onClick={this.onClickW}>
             <p style={this.divStyle} className='keyboard-icon'>⌨</p>
             <p>Send by Whatsapp</p>
         </div>
-        <div style={styleI} className='menu-item' onClick={this.onClickI}>
+        <div className={styleItemI} onClick={this.onClickI}>
             <p style={this.divStyle} className='star-icon'>★</p>
             <p>Info</p>
         </div>

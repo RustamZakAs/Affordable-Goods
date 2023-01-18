@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class Info extends Component {
   render() {
     return (
-      <div className="info">
+      <div className="in-main-form">
         <hr />
         <div className="card">
           <div className="card-body">

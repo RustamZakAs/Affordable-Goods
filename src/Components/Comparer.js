@@ -10,7 +10,6 @@ export default class Comparer extends Component {
       firstResultSymbol: "o",
       firstResultBool: null,
 
-
       secondPrice: 0.0,
       secondValue: 0.0,
 
@@ -18,7 +17,6 @@ export default class Comparer extends Component {
       secondResultSymbol: "o",
       secondResultBool: null,
 
-      
       thirdPrice: 0.0,
       thirdValue: 0.0,
 
@@ -33,8 +31,7 @@ export default class Comparer extends Component {
     marginLeft: "5px",
   };
 
-  resultComparer = (event) => 
-  {
+  resultComparer = (event) => {
     const symbolX = "✖";
     const symbolV = "✓";
     let first =
@@ -54,7 +51,7 @@ export default class Comparer extends Component {
         ? 0
         : parseFloat(this.state.data.secondPrice) /
           parseFloat(this.state.data.secondValue);
-          
+
     this.setState(
       Object.assign(this.state.data, {
         secondResult: Math.round(second * 100) / 100,
@@ -72,7 +69,7 @@ export default class Comparer extends Component {
         thirdResult: Math.round(third * 100) / 100,
       })
     );
-    
+
     const array = new Array();
     if (parseFloat(this.state.data.firstResult) > 0)
       array.push(parseFloat(this.state.data.firstResult));
@@ -84,62 +81,62 @@ export default class Comparer extends Component {
     const minValue = Math.min.apply(Math, array);
 
     this.setState(
-      Object.assign(this.state.data, { 
-        firstResultSymbol: symbolX, 
+      Object.assign(this.state.data, {
+        firstResultSymbol: symbolX,
         firstResultBool: false,
-        secondResultSymbol: symbolX, 
+        secondResultSymbol: symbolX,
         secondResultBool: false,
-        thirdResultSymbol: symbolX, 
+        thirdResultSymbol: symbolX,
         thirdResultBool: false,
-       })
+      })
     );
 
     if (parseFloat(this.state.data.firstResult) === minValue) {
       this.setState(
-        Object.assign(this.state.data, { 
-          firstResultSymbol: symbolV, 
+        Object.assign(this.state.data, {
+          firstResultSymbol: symbolV,
           firstResultBool: true,
-         })
+        })
       );
     }
     if (parseFloat(this.state.data.secondResult) === minValue) {
       this.setState(
-        Object.assign(this.state.data, { 
-          secondResultSymbol: symbolV, 
+        Object.assign(this.state.data, {
+          secondResultSymbol: symbolV,
           secondResultBool: true,
-         })
+        })
       );
     }
     if (parseFloat(this.state.data.thirdResult) === minValue) {
       this.setState(
-        Object.assign(this.state.data, { 
-          thirdResultSymbol: symbolV, 
+        Object.assign(this.state.data, {
+          thirdResultSymbol: symbolV,
           thirdResultBool: true,
-         })
+        })
       );
     }
 
     if (parseFloat(this.state.data.firstResult) === 0) {
       this.setState(
-        Object.assign(this.state.data, { 
+        Object.assign(this.state.data, {
           firstResultSymbol: symbolX,
-          firstResultBool: false
+          firstResultBool: false,
         })
       );
     }
     if (parseFloat(this.state.data.secondResult) === 0) {
       this.setState(
-        Object.assign(this.state.data, { 
+        Object.assign(this.state.data, {
           secondResultSymbol: symbolX,
-          secondResultBool: false
+          secondResultBool: false,
         })
       );
     }
     if (parseFloat(this.state.data.thirdResult) === 0) {
       this.setState(
-        Object.assign(this.state.data, { 
+        Object.assign(this.state.data, {
           thirdResultSymbol: symbolX,
-          thirdResultBool: false
+          thirdResultBool: false,
         })
       );
     }
@@ -151,7 +148,9 @@ export default class Comparer extends Component {
   firstPriceChanger = (event) => {
     this.setState(
       Object.assign(this.state.data, {
-        firstPrice: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+        firstPrice: isNaN(parseFloat(event.target.value))
+          ? 0.0
+          : parseFloat(event.target.value),
       })
     );
     this.resultComparer();
@@ -160,7 +159,9 @@ export default class Comparer extends Component {
   firstValueChanger = (event) => {
     this.setState(
       Object.assign(this.state.data, {
-        firstValue: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+        firstValue: isNaN(parseFloat(event.target.value))
+          ? 0.0
+          : parseFloat(event.target.value),
       })
     );
     this.resultComparer();
@@ -169,7 +170,9 @@ export default class Comparer extends Component {
   secondPriceChanger = (event) => {
     this.setState(
       Object.assign(this.state.data, {
-        secondPrice: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+        secondPrice: isNaN(parseFloat(event.target.value))
+          ? 0.0
+          : parseFloat(event.target.value),
       })
     );
     this.resultComparer();
@@ -178,7 +181,9 @@ export default class Comparer extends Component {
   secondValueChanger = (event) => {
     this.setState(
       Object.assign(this.state.data, {
-        secondValue: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+        secondValue: isNaN(parseFloat(event.target.value))
+          ? 0.0
+          : parseFloat(event.target.value),
       })
     );
     this.resultComparer();
@@ -187,7 +192,9 @@ export default class Comparer extends Component {
   thirdPriceChanger = (event) => {
     this.setState(
       Object.assign(this.state.data, {
-        thirdPrice: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+        thirdPrice: isNaN(parseFloat(event.target.value))
+          ? 0.0
+          : parseFloat(event.target.value),
       })
     );
     this.resultComparer();
@@ -196,49 +203,55 @@ export default class Comparer extends Component {
   thirdValueChanger = (event) => {
     this.setState(
       Object.assign(this.state.data, {
-        thirdValue: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+        thirdValue: isNaN(parseFloat(event.target.value))
+          ? 0.0
+          : parseFloat(event.target.value),
       })
     );
     this.resultComparer();
   };
 
   componentDidMount() {
-    let paramMaxCompareCount = window.localStorage.getItem("paramMaxCompareCount");
+    let paramMaxCompareCount = window.localStorage.getItem(
+      "paramMaxCompareCount"
+    );
     if (!isNaN(paramMaxCompareCount) && parseFloat(paramMaxCompareCount) > 0)
       this.setState({ paramMaxCompareCount: paramMaxCompareCount });
     else this.setState({ paramMaxCompareCount: 1 });
 
     let comparer = window.localStorage.getItem("comparer");
     comparer = JSON.parse(comparer);
-    if (comparer)
-      this.setState({ data: comparer });
+    if (comparer) this.setState({ data: comparer });
     else
-    this.setState(
-      Object.assign(this.state.data, {
-        firstPrice: 0.0,
-        firstValue: 0.0,
-        firstResultSymbol: symbolX, 
-        firstResultBool: false,
+      this.setState(
+        Object.assign(this.state.data, {
+          firstPrice: 0.0,
+          firstValue: 0.0,
+          firstResultSymbol: symbolX,
+          firstResultBool: false,
 
-        secondPrice: 0.0,
-        secondValue: 0.0,
-        secondResultSymbol: symbolX, 
-        secondResultBool: false,
+          secondPrice: 0.0,
+          secondValue: 0.0,
+          secondResultSymbol: symbolX,
+          secondResultBool: false,
 
-        thirdPrice: 0.0,
-        thirdValue: 0.0,
-        thirdResultSymbol: symbolX, 
-        thirdResultBool: false,
-       })
-    );
+          thirdPrice: 0.0,
+          thirdValue: 0.0,
+          thirdResultSymbol: symbolX,
+          thirdResultBool: false,
+        })
+      );
   }
 
   render() {
     return (
       <>
-        <div className="comparer">
+        <div className="in-main-form">
           <hr />
-          <div className="my-row" hidden={!(parseInt(this.state.paramMaxCompareCount) >= 1)}>
+          <div
+            className="my-row"
+            hidden={!(parseInt(this.state.paramMaxCompareCount) >= 1)}
+          >
             <div className="compare-col">
               <label for="first-price" className="form-label">
                 First price
@@ -298,7 +311,10 @@ export default class Comparer extends Component {
               </div>
             </div>
           </div>
-          <div className="my-row" hidden={!(parseInt(this.state.paramMaxCompareCount) >= 2)}>
+          <div
+            className="my-row"
+            hidden={!(parseInt(this.state.paramMaxCompareCount) >= 2)}
+          >
             <div className="compare-col">
               <label for="second-price" className="form-label">
                 Second price
@@ -358,7 +374,10 @@ export default class Comparer extends Component {
               </div>
             </div>
           </div>
-          <div className="my-row" hidden={!(parseInt(this.state.paramMaxCompareCount) >= 3)}>
+          <div
+            className="my-row"
+            hidden={!(parseInt(this.state.paramMaxCompareCount) >= 3)}
+          >
             <div className="compare-col">
               <label for="third-price" className="form-label">
                 Third price

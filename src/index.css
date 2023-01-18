@@ -1,248 +1,291 @@
 :root {
-    --mail-buttons-color: #4CAF50;
-    --mail-buttons-color-hover: #427a44;
-    /* --mail-buttons-color-hover: red; */
+  --mail-buttons-color: #4caf50;
+  --mail-buttons-color-hover: #427a44;
+  /* --mail-buttons-color-hover: red; */
 }
 
 @font-face {
-    font-family: "RobotoBold";
-    src: local("RobotoBold"), url("./fonts/Roboto/Roboto-Bold.ttf") format("truetype");
-    font-weight: bold;
+  font-family: "RobotoBold";
+  src: local("RobotoBold"),
+    url("./fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: "RobotoLight";
-    src: local("RobotoLight"), url("./fonts/Roboto/Roboto-Light.ttf") format("truetype");
-    font-weight: lighter;
+  font-family: "RobotoLight";
+  src: local("RobotoLight"),
+    url("./fonts/Roboto/Roboto-Light.ttf") format("truetype");
+  font-weight: lighter;
 }
 
 @font-face {
-    font-family: "RobotoMedium";
-    src: local("RobotoMedium"), url("./fonts/Roboto/Roboto-Medium.ttf") format("truetype");
-    font-weight: normal;
+  font-family: "RobotoMedium";
+  src: local("RobotoMedium"),
+    url("./fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: normal;
 }
 
 /*-----start App-----*/
 * {
-    padding: 0;
-    margin: 0;
-    font-family: "RobotoMedium";
+  padding: 0;
+  margin: 0;
+  font-family: "RobotoMedium";
 }
 
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
 }
 
 .app {
-    width: 100vw;
-    height: 100vh;
-    background-color: aliceblue;
+  width: 100vw;
+  height: 100%;
+  background-color: aliceblue;
+}
+
+.in-main-form {
+  width: 68%;
+  overflow-y: auto;
+  z-index: 1;
+  padding: 0 6px 15px 6px;
+  transition: ease all 0.99s;
+}
+
+@media only screen and (max-width: 440px) {
+  .in-main-form {
+    width: 98%;
+    overflow-y: auto;
+    z-index: 1;
+    padding: 0 6px 15px 6px;
+  }
 }
 
 /*-----end App-----*/
 /*-----start Header-----*/
 .header {
-    height: 10vh;
-    background-color: silver;
-    display: flex;
-    justify-content: space-between;
+  height: 10vh;
+  background-color: silver;
+  display: flex;
+  justify-content: space-between;
+  transition: ease all 0.99s;
 }
 
 .header-img-div {
-    display: flex;
-    position: relative;
-    top: 10px;
-    left: 10px;
-    height: 20vh;
-    transition: ease all .99s;
+  display: flex;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  height: 20vh;
+  transition: ease all 0.99s;
 }
 
 .header-text {
-    display: flex;
-    text-transform: uppercase;
-    align-items: normal;
-    transition: ease all .99s;
+  display: flex;
+  text-transform: uppercase;
+  align-items: normal;
+  transition: ease all 0.99s;
 }
 
 @media only screen and (max-width: 720px) {
-    .header-img-div {
-        position: relative;
-        top: 2px;
-        left: 2px;
-        height: 9.9vh;
-    }
+  .header-img-div {
+    position: relative;
+    top: 2px;
+    left: 2px;
+    height: 9.9vh;
+    transition: ease all 0.99s;
+  }
 
-    .header-text {
-        display: flex;
-        text-transform: uppercase;
-        align-items: center;
-        margin-left: 7px;
-    }
+  .header-text {
+    display: flex;
+    text-transform: uppercase;
+    align-items: center;
+    margin-left: 7px;
+    transition: ease all 0.99s;
+  }
 }
 
 .header-img {
-    height: 100%;
+  height: 100%;
 }
 
 .header-right-icon {
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    text-align: right;
-    flex-direction: column;
-    justify-content: center;
-    margin: 18px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  justify-content: center;
+  margin: 18px;
+  transition: ease all 0.99s;
 }
 /*-----end Header-----*/
 /*-----start Main-----*/
 .main {
-    height: 75vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: relative;
+  height: 75vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
 .bg-image {
-    opacity: 0.2;
-    position: absolute;
-    text-align: center;
-    margin: auto;
-    height: 100%;
-    width: 40%;
-    object-fit:contain;
-}
-
-.comparer {
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
+  opacity: 0.2;
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .my-row {
-    display: flex;
-    flex-direction: row;
-}
-
-@media screen and (max-width: 520px) {
-    .my-row {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .result {
-        font-size: x-large;
-        margin-left: 0px;
-    }
+  display: flex;
+  flex-direction: row;
+  transition: ease all 0.99s;
 }
 
 .result {
+  font-size: x-large;
+  margin-left: 20px;
+  transition: ease all 0.99s;
+}
+
+@media screen and (max-width: 520px) {
+  .my-row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result {
     font-size: x-large;
-    margin-left: 20px;
+    margin-left: 0px;
+  }
 }
 
 .result-false {
-    color: red;
+  color: red;
 }
 
 .result-true {
-    color: green;
+  color: green;
 }
 /*-----end Main-----*/
 /*-----start Menu-----*/
 .menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 15vh;
-    background-color: silver;
-    z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 15vh;
+  background-color: silver;
+}
+
+.menu-item.selected {
+  /* border: 2px solid black !important; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .menu-item {
-    font-family: "RobotoLight";
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    border-radius: 10px;
-    width: 20%;
+  font-family: "RobotoLight";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  width: 20%;
 
-    background-color: var(--mail-buttons-color);
-    border: none;
-    color: white;
-    transition: 1s;
+  background-color: var(--mail-buttons-color);
+  border: none;
+  color: white;
+  transition: 1s;
 }
 
 .menu-item:hover {
-    background-color: var(--mail-buttons-color-hover);
-    transition: 1s;
-    cursor: pointer;
-    /* box-shadow: inset 0px 0px 277px 3px var(--mail-buttons-color-hover); */
+  background-color: var(--mail-buttons-color-hover);
+  transition: 1s;
+  cursor: pointer;
+  /* box-shadow: inset 0px 0px 277px 3px var(--mail-buttons-color-hover); */
 }
 
-
 @media screen and (max-width: 450px) {
-    .menu-item p {
-        font-size: 0.75em;
-    }
+  .menu-item p {
+    font-size: 0.75em;
+    transition: ease all 0.99s;
+  }
 }
 
 .menu-item:hover p.first-child {
-    font-size: 250%;  
+  font-size: 250%;
 }
 
 .menu-item p:first-child {
-    font-size: 200%;
+  font-size: 200%;
 }
 
 .menu-type-2.menu {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .menu-type-2 .menu-item {
-    width: calc(100%/3);
-    background-color: var(--mail-buttons-color);
-    border: none;
-    color: white;
-    transition: 1s;
-    border-radius: 0px;
+  width: calc(100% / 3);
+  background-color: var(--mail-buttons-color);
+  border: none;
+  color: white;
+  transition: 1s;
+  border-radius: 0px;
 }
 
 .compare-result {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: 34px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 34px;
+  transition: ease all 0.99s;
 }
 
 @media screen and (max-width: 520px) {
-    .compare-result {
-        display: flex;
-        flex-direction: row;
-        position: relative;
-        top: -10px;
-    }
+  .compare-result {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: -10px;
+  }
 }
 /*-----end Menu-----*/
 /*-----start Info-----*/
-.info {
-    z-index: 1;
-}
 /*-----end Info-----*/
 /*-----start SendToWhatsapp-----*/
-.send-to-whatsapp {
-    z-index: 1;
+.example {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem -15px 0;
+  border: solid #f8f9fa;
+  border-width: 0.2rem 0 0;
 }
 
-.example {
-    position: relative;
-    padding: 1rem;
-    margin: 1rem -15px 0;
-    border: solid #f8f9fa;
-    border-width: 0.2rem 0 0;
+.list-group.many {
+  overflow-y: auto;
+  height: 55vh;
+}
+
+@media screen and (min-height: 540px) {
+  .list-group.many {
+    overflow-y: auto;
+    height: 48vh;
+  }
+}
+
+@media only screen and (min-height: 525px) {
+  .list-group.many {
+    overflow-y: auto;
+    height: 46.5vh;
+  }
 }
 /*-----end SendToWhatsapp-----*/
+/*-----start Params-----*/
+/*-----end Params-----*/

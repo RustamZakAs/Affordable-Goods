@@ -12,7 +12,7 @@ export default class Params extends Component {
   }
   render() {
     return (
-      <div className="params">
+      <div className="in-main-form">
         <hr />
         <form>
           <div className="input-group mb-3">
@@ -28,6 +28,7 @@ export default class Params extends Component {
                 value={this.state.paramMaxCompareCount}
                 onChange={(event) => {
                   this.setState({paramMaxCompareCount: parseInt(event.target.value),});
+                  alert('Data saved!');
                 }}
                 className="form-control"
                 name="whatsappNumber"
