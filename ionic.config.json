@@ -1,0 +1,7 @@
+{
+  "name": "Affordable Goods",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

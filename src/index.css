@@ -48,12 +48,19 @@ p {
 }
 
 .header-img-div {
+    display: flex;
     position: relative;
     top: 10px;
     left: 10px;
     height: 20vh;
     width: 40%;
     transition: ease all .99s;
+}
+
+.header-text {
+    display: flex;
+    text-transform: uppercase;
+    align-items: normal;
 }
 
 @media only screen and (max-width: 720px) {
@@ -63,6 +70,12 @@ p {
         left: 2px;
         height: 10vh;
         width: 40%;
+    }
+
+    .header-text {
+        display: flex;
+        text-transform: uppercase;
+        align-items: center;
     }
 }
 
@@ -109,13 +122,6 @@ p {
     .result {
         font-size: x-large;
         margin-left: 0px;
-    }
-
-    .compare-result {
-        display: flex;
-        flex-direction: row;
-        position: relative;
-        top: -15px;
     }
 }
 
@@ -191,6 +197,15 @@ p {
     flex-direction: row;
     position: relative;
     top: 34px;
+}
+
+@media screen and (max-width: 520px) {
+    .compare-result {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        top: -10px;
+    }
 }
 /*-----end Menu-----*/
 /*-----start Info-----*/
