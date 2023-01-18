@@ -26,6 +26,7 @@ export default class Comparer extends Component {
       thirdResultSymbol: "o",
       thirdResultBool: null,
     },
+    paramMaxCompareCount: 2,
   };
 
   divStyle = {
@@ -202,9 +203,30 @@ export default class Comparer extends Component {
   };
 
   componentDidMount() {
+    //let paramMaxCompareCount = window.localStorage.getItem("paramMaxCompareCount");
     let comparer = window.localStorage.getItem("comparer");
     comparer = JSON.parse(comparer);
-    if (comparer) this.setState({ data: comparer });
+    if (comparer)
+      this.setState({ data: comparer });
+    else
+    this.setState(
+      Object.assign(this.state.data, {
+        firstPrice: 0.0,
+        firstValue: 0.0,
+        firstResultSymbol: symbolX, 
+        firstResultBool: false,
+
+        secondPrice: 0.0,
+        secondValue: 0.0,
+        secondResultSymbol: symbolX, 
+        secondResultBool: false,
+
+        thirdPrice: 0.0,
+        thirdValue: 0.0,
+        thirdResultSymbol: symbolX, 
+        thirdResultBool: false,
+       })
+    );
   }
 
   render() {
@@ -212,7 +234,7 @@ export default class Comparer extends Component {
       <>
         <div className="comparer">
           <hr />
-          <div className="my-row">
+          <div className="my-row" hidden={!(parseInt(this.state.paramMaxCompareCount) >= 1)}>
             <div className="compare-col">
               <label for="first-price" className="form-label">
                 First price
@@ -272,7 +294,7 @@ export default class Comparer extends Component {
               </div>
             </div>
           </div>
-          <div className="my-row">
+          <div className="my-row" hidden={!(parseInt(this.state.paramMaxCompareCount) >= 2)}>
             <div className="compare-col">
               <label for="second-price" className="form-label">
                 Second price
@@ -332,7 +354,7 @@ export default class Comparer extends Component {
               </div>
             </div>
           </div>
-          <div className="my-row">
+          <div className="my-row" hidden={!(parseInt(this.state.paramMaxCompareCount) >= 3)}>
             <div className="compare-col">
               <label for="third-price" className="form-label">
                 Third price

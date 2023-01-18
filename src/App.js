@@ -11,7 +11,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default class App extends Component {
   state = {
-    currentFormCode: 'C',
+    currentFormCode: 'P',
     getCurrentFormCode: (value) => {
       console.log(value);
       this.setState({currentFormCode: value});
