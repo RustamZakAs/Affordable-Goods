@@ -203,7 +203,11 @@ export default class Comparer extends Component {
   };
 
   componentDidMount() {
-    //let paramMaxCompareCount = window.localStorage.getItem("paramMaxCompareCount");
+    let paramMaxCompareCount = window.localStorage.getItem("paramMaxCompareCount");
+    if (!isNaN(paramMaxCompareCount) && parseFloat(paramMaxCompareCount) > 0)
+      this.setState({ paramMaxCompareCount: paramMaxCompareCount });
+    else this.setState({ paramMaxCompareCount: 1 });
+
     let comparer = window.localStorage.getItem("comparer");
     comparer = JSON.parse(comparer);
     if (comparer)

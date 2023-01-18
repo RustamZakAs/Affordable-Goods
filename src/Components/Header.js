@@ -36,7 +36,12 @@ export default class Header extends Component {
               : ""}
           </span>
         </div>
-        <div className="header-right-icon">
+        <div
+          className="header-right-icon"
+          onClick={() => {
+            this.props.getter("P");
+          }}
+        >
           <i class="fa fa-align-justify fa-2x" aria-hidden="false"></i>
         </div>
       </div>

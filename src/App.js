@@ -11,16 +11,16 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default class App extends Component {
   state = {
-    currentFormCode: 'P',
+    currentFormCode: 'C',
     getCurrentFormCode: (value) => {
-      console.log(value);
+      //console.log(value);
       this.setState({currentFormCode: value});
     }
   }
 
   render() {
     return <div className="app">
-      <Header formCode={this.state.currentFormCode} />
+      <Header getter={this.state.getCurrentFormCode} formCode={this.state.currentFormCode} />
       <Main currentFormCode={this.state.currentFormCode}  />
       <Menu getter={this.state.getCurrentFormCode} formCode={this.state.currentFormCode}/> 
     </div>;
