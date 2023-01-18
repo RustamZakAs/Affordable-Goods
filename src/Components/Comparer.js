@@ -6,16 +6,25 @@ export default class Comparer extends Component {
       firstPrice: 0.0,
       firstValue: 0.0,
 
-      secondPrice: 0.0,
-      secondValue: 0.0,
-
       firstResult: 0.0,
       firstResultSymbol: "o",
       firstResultBool: null,
 
+
+      secondPrice: 0.0,
+      secondValue: 0.0,
+
       secondResult: 0.0,
       secondResultSymbol: "o",
       secondResultBool: null,
+
+      
+      thirdPrice: 0.0,
+      thirdValue: 0.0,
+
+      thirdResult: 0.0,
+      thirdResultSymbol: "o",
+      thirdResultBool: null,
     },
   };
 
@@ -23,7 +32,8 @@ export default class Comparer extends Component {
     marginLeft: "5px",
   };
 
-  resultComparer = (event) => {
+  resultComparer = (event) => 
+  {
     const symbolX = "✖";
     const symbolV = "✓";
     let first =
@@ -43,50 +53,72 @@ export default class Comparer extends Component {
         ? 0
         : parseFloat(this.state.data.secondPrice) /
           parseFloat(this.state.data.secondValue);
+          
     this.setState(
       Object.assign(this.state.data, {
         secondResult: Math.round(second * 100) / 100,
       })
     );
 
-    if (parseFloat(first) > parseFloat(second)) {
+    let third =
+      parseFloat(this.state.data.thirdValue) === 0
+        ? 0
+        : parseFloat(this.state.data.thirdPrice) /
+          parseFloat(this.state.data.thirdValue);
+
+    this.setState(
+      Object.assign(this.state.data, {
+        thirdResult: Math.round(third * 100) / 100,
+      })
+    );
+    
+    const array = new Array();
+    if (parseFloat(this.state.data.firstResult) > 0)
+      array.push(parseFloat(this.state.data.firstResult));
+    if (parseFloat(this.state.data.secondResult) > 0)
+      array.push(parseFloat(this.state.data.secondResult));
+    if (parseFloat(this.state.data.thirdResult) > 0)
+      array.push(parseFloat(this.state.data.thirdResult));
+
+    const minValue = Math.min.apply(Math, array);
+
+    this.setState(
+      Object.assign(this.state.data, { 
+        firstResultSymbol: symbolX, 
+        firstResultBool: false,
+        secondResultSymbol: symbolX, 
+        secondResultBool: false,
+        thirdResultSymbol: symbolX, 
+        thirdResultBool: false,
+       })
+    );
+
+    if (parseFloat(this.state.data.firstResult) === minValue) {
       this.setState(
         Object.assign(this.state.data, { 
-          firstResultSymbol: symbolX, 
-          firstResultBool: false, 
-          secondResultSymbol: symbolV,
-          secondResultBool: true
+          firstResultSymbol: symbolV, 
+          firstResultBool: true,
          })
       );
-    } else if (parseFloat(first) < parseFloat(second)) {
+    }
+    if (parseFloat(this.state.data.secondResult) === minValue) {
       this.setState(
         Object.assign(this.state.data, { 
-          firstResultSymbol: symbolV,
-          firstResultBool: true,
-          secondResultSymbol: symbolX,
-          secondResultBool: false
-        })
-      );
-    } else if (parseFloat(first) === 0 && parseFloat(second) === 0) {
-      this.setState(
-        Object.assign(this.state.data, { 
-          firstResultSymbol: symbolX,
-          firstResultBool: false,
-          secondResultSymbol: symbolX,
-          secondResultBool: false
-        })
-      );
-    } else {
-      this.setState(
-        Object.assign(this.state.data, { 
-          firstResultSymbol: symbolV,
-          firstResultBool: true,
-          secondResultSymbol: symbolV,
-          secondResultBool: true
-        })
+          secondResultSymbol: symbolV, 
+          secondResultBool: true,
+         })
       );
     }
-    if (parseFloat(first) === 0) {
+    if (parseFloat(this.state.data.thirdResult) === minValue) {
+      this.setState(
+        Object.assign(this.state.data, { 
+          thirdResultSymbol: symbolV, 
+          thirdResultBool: true,
+         })
+      );
+    }
+
+    if (parseFloat(this.state.data.firstResult) === 0) {
       this.setState(
         Object.assign(this.state.data, { 
           firstResultSymbol: symbolX,
@@ -94,7 +126,7 @@ export default class Comparer extends Component {
         })
       );
     }
-    if (parseFloat(second) === 0) {
+    if (parseFloat(this.state.data.secondResult) === 0) {
       this.setState(
         Object.assign(this.state.data, { 
           secondResultSymbol: symbolX,
@@ -102,7 +134,15 @@ export default class Comparer extends Component {
         })
       );
     }
-    console.log(this.state.data);
+    if (parseFloat(this.state.data.thirdResult) === 0) {
+      this.setState(
+        Object.assign(this.state.data, { 
+          thirdResultSymbol: symbolX,
+          thirdResultBool: false
+        })
+      );
+    }
+    //console.log(this.state.data);
     const jsonString = JSON.stringify(this.state.data);
     localStorage.setItem("comparer", jsonString);
   };
@@ -143,6 +183,24 @@ export default class Comparer extends Component {
     this.resultComparer();
   };
 
+  thirdPriceChanger = (event) => {
+    this.setState(
+      Object.assign(this.state.data, {
+        thirdPrice: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+      })
+    );
+    this.resultComparer();
+  };
+
+  thirdValueChanger = (event) => {
+    this.setState(
+      Object.assign(this.state.data, {
+        thirdValue: isNaN(parseFloat(event.target.value)) ? 0.00 : parseFloat(event.target.value),
+      })
+    );
+    this.resultComparer();
+  };
+
   componentDidMount() {
     let comparer = window.localStorage.getItem("comparer");
     comparer = JSON.parse(comparer);
@@ -169,7 +227,7 @@ export default class Comparer extends Component {
                   aria-describedby="basic-addon3"
                   min={0.0}
                   step={0.01}
-                  value={this.state.data.firstPrice}
+                  value={parseFloat(this.state.data.firstPrice)}
                 />
               </div>
             </div>
@@ -187,7 +245,7 @@ export default class Comparer extends Component {
                   aria-describedby="basic-addon3"
                   min={0.0}
                   step={0.01}
-                  value={this.state.data.firstValue}
+                  value={parseFloat(this.state.data.firstValue)}
                 />
               </div>
             </div>
@@ -229,7 +287,7 @@ export default class Comparer extends Component {
                   aria-describedby="basic-addon3"
                   min={0.0}
                   step={0.01}
-                  value={this.state.data.secondPrice}
+                  value={parseFloat(this.state.data.secondPrice)}
                 />
               </div>
             </div>
@@ -247,7 +305,7 @@ export default class Comparer extends Component {
                   aria-describedby="basic-addon3"
                   min={0.0}
                   step={0.01}
-                  value={this.state.data.secondValue}
+                  value={parseFloat(this.state.data.secondValue)}
                 />
               </div>
             </div>
@@ -271,6 +329,66 @@ export default class Comparer extends Component {
                 }`}
               >
                 {this.state.data.secondResultSymbol}
+              </div>
+            </div>
+          </div>
+          <div className="my-row">
+            <div className="compare-col">
+              <label for="third-price" className="form-label">
+                Third price
+              </label>
+              <div className="input-group mb-3">
+                <input
+                  type="number"
+                  className="form-control"
+                  onChange={this.thirdPriceChanger}
+                  name="third-price"
+                  id="third-price"
+                  aria-describedby="basic-addon3"
+                  min={0.0}
+                  step={0.01}
+                  value={parseFloat(this.state.data.thirdPrice)}
+                />
+              </div>
+            </div>
+            <div className="compare-col">
+              <label for="third-value" className="form-label">
+                Third value
+              </label>
+              <div className="input-group mb-3">
+                <input
+                  type="number"
+                  className="form-control"
+                  onChange={this.thirdValueChanger}
+                  name="third-value"
+                  id="third-price"
+                  aria-describedby="basic-addon3"
+                  min={0.0}
+                  step={0.01}
+                  value={parseFloat(this.state.data.thirdValue)}
+                />
+              </div>
+            </div>
+            <div className="compare-col compare-result">
+              <div
+                style={this.divStyle}
+                className={`result ${
+                  this.state.data.thirdResultBool
+                    ? " result-true"
+                    : " result-false"
+                }`}
+              >
+                {this.state.data.thirdResult}
+              </div>
+              <div
+                style={this.divStyle}
+                className={`result ${
+                  this.state.data.thirdResultBool
+                    ? " result-true"
+                    : " result-false"
+                }`}
+              >
+                {this.state.data.thirdResultSymbol}
               </div>
             </div>
           </div>
