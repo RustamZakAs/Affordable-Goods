@@ -28,7 +28,7 @@ export default class Params extends Component {
                 value={this.state.paramMaxCompareCount}
                 onChange={(event) => {
                   this.setState({paramMaxCompareCount: parseInt(event.target.value),});
-                  alert('Data saved!');
+                  <Snackbar message={'Data saved!'} />
                 }}
                 className="form-control"
                 name="whatsappNumber"
@@ -43,7 +43,6 @@ export default class Params extends Component {
                   type="button"
                   id="button-addon2"
                   onClick={(event) => {
-                    console.log(this.state.paramMaxCompareCount);
                     localStorage.setItem("paramMaxCompareCount", parseInt(this.state.paramMaxCompareCount));
                   }}
                 >

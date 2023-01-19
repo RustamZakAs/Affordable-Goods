@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@capacitor/android": "^4.6.2",
+    "@capacitor/cli": "^4.6.2",
+    "@capacitor/core": "^4.6.2",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.0",
     "react": "^18.2.0",

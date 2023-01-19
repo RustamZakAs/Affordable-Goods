@@ -71,21 +71,26 @@ export default class Comparer extends Component {
     );
 
     const array = new Array();
-    if (parseFloat(this.state.data.firstResult) > 0)
+    if (parseFloat(this.state.data.firstResult) > 0 && this.state.paramMaxCompareCount >= 1)
       array.push(parseFloat(this.state.data.firstResult));
-    if (parseFloat(this.state.data.secondResult) > 0)
+    if (parseFloat(this.state.data.secondResult) > 0 && this.state.paramMaxCompareCount >= 2)
       array.push(parseFloat(this.state.data.secondResult));
-    if (parseFloat(this.state.data.thirdResult) > 0)
+    if (parseFloat(this.state.data.thirdResult) > 0 && this.state.paramMaxCompareCount >= 3)
       array.push(parseFloat(this.state.data.thirdResult));
 
     const minValue = Math.min.apply(Math, array);
 
     this.setState(
       Object.assign(this.state.data, {
+        // firstResult: 0.0,
         firstResultSymbol: symbolX,
         firstResultBool: false,
+
+        // secondResult: 0.0,
         secondResultSymbol: symbolX,
         secondResultBool: false,
+
+        // thirdResult: 0.0,
         thirdResultSymbol: symbolX,
         thirdResultBool: false,
       })
